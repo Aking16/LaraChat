@@ -1,18 +1,13 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import ChatLayout from '@/Layouts/ChatLayout';
 import { Head } from '@inertiajs/react';
 import DeleteUserForm from './Partials/DeleteUserForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
 
-export default function Edit({ mustVerifyEmail, status }) {
+function Edit({ mustVerifyEmail, status }) {
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    Profile
-                </h2>
-            }
-        >
+        <div>
             <Head title="Profile" />
 
             <div className="py-12">
@@ -34,6 +29,23 @@ export default function Edit({ mustVerifyEmail, status }) {
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </div>
     );
 }
+
+Edit.layout = (page) => {
+    return (
+        <AuthenticatedLayout
+            header={
+                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                    Profile
+                </h2>
+            }>
+            <ChatLayout>
+                {page}
+            </ChatLayout>
+        </AuthenticatedLayout>
+    );
+};
+
+export default Edit;
