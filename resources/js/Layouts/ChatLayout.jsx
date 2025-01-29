@@ -12,9 +12,6 @@ export default function ChatLayout({ children }) {
   const [sortedConversations, setSortedConversations] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState({});
 
-  console.log({ conversations });
-  console.log({ selectedConversation });
-
   const isUserOnline = (userId) => onlineUsers[userId];
 
   const onSearch = (event) => {
@@ -82,11 +79,11 @@ export default function ChatLayout({ children }) {
   return (
     <div className="flex flex-col md:flex-row">
       <aside
-        className={`flex flex-col h-screen w-full py-4 sm:w-56 md:w-80 border-e transition-all overflow-x-hidden overflow-y-auto ${selectedConversation && "-ms-[100vw] sm:ms-0"}`}>
+        className={`flex-col w-full py-4 sm:w-[21rem] border-e transition-all overflow-x-hidden overflow-y-auto ${selectedConversation && "hidden h-full sm:flex sm:h-[93vh]"}`}>
         <ScrollArea type="scroll">
           <div className="px-4 space-y-2">
             <h1 className="text-xl font-bold">Conversations</h1>
-            <Input onKeyUp={onSearch} placeholder="Search" />
+            <Input onKeyUp={onSearch} placeholder="Search"/>
           </div>
           <div className="w-full mt-2">
             {sortedConversations.map((item, index) => (

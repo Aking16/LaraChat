@@ -18,7 +18,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 dayjs.extend(relativeTime);
 
-export default function ConversationCard({ conversation, online, selectedConversation }) {
+const ConversationCard = ({ conversation, online, selectedConversation }) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
@@ -36,7 +36,7 @@ export default function ConversationCard({ conversation, online, selectedConvers
               <p>{conversation.name}</p>
               {/* {conversation.last_message_date && <p className="text-muted-foreground">{dayjs(conversation.last_message_date).fromNow()}</p>} */}
             </div>
-            <span className="text-muted-foreground line-clamp-1 w-72 sm:w-50 md:w-56">{conversation.last_message}</span>
+            <span className="text-muted-foreground line-clamp-1 w-full sm:w-50 md:w-56">{conversation.last_message}</span>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger className="text-muted-foreground hover:text-accent-foreground">
@@ -57,6 +57,8 @@ export default function ConversationCard({ conversation, online, selectedConvers
           Block User
         </ContextMenuItem>
       </ContextMenuContent>
-    </ContextMenu >
+    </ContextMenu>
   );
-}
+};
+
+export default ConversationCard;
