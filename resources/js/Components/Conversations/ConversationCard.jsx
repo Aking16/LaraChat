@@ -23,7 +23,7 @@ export default function ConversationCard({ conversation, online, selectedConvers
     <ContextMenu>
       <ContextMenuTrigger asChild>
         <Link
-          // href={conversation.is_group ? route("chat.group", conversation) : route("chat.user", conversation)}
+          href={conversation.is_group ? route("chat.group", conversation) : route("chat.user", conversation)}
           preserveState
           className={`flex items-start h-20 gap-2 px-4 py-4 relative hover:bg-accent hover:text-accent-foreground ${conversation.is_user && conversation.blocked_at && "opacity-50"}`}>
           {conversation.is_user && <i className={`absolute bottom-5 left-4 border rounded-full h-3 w-3 z-20 ${online ? "bg-primary" : "bg-gray-700"}`} />}
